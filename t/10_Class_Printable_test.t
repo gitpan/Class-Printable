@@ -74,3 +74,14 @@ can_ok("TestOtherPackage", 'new');
     like("$test", qr/TestOtherPackage\=HASH\(0x[a-z0-9]+\)/, '... got the overload value');
     like($test->stringValue(), qr/TestOtherPackage\=HASH\(0x[a-z0-9]+\)/, '... got the string value');
 }
+
+{
+    my $test = TestOtherPackage->new("Hello Other World");
+    isa_ok($test, 'TestOtherPackage');
+
+    my $test2 = TestOtherPackage->new("Hello Other World");
+    isa_ok($test2, 'TestOtherPackage');    
+    
+    ok($test ne $test2, '... these objects are not equal and they dont try to find overloads');
+}
+

@@ -4,10 +4,10 @@ package Class::Printable;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 ## overload operator
-use overload q|""| => "toString";
+use overload q|""| => "toString", fallback => 1;
 
 ### methods
 
